@@ -1,20 +1,20 @@
-angular.module("quoteBook").controller("mainCtrl", function($scope, service) {
+angular.module('quoteBook').controller('mainCtrl', function ($scope, dataService) {
+  $scope.test = 'hi';
+  $scope.quotes = dataService.getQuotes();
 
-  $scope.quotes = service.getQuotes();
-
-  $scope.deleteMe = function(textToDelete) {
-    dataService.removeData(textToDelete);
+  $scope.deleteQuote = function(obj) {
+   dataService.removeData(obj);
   }
-
-  $scope.addQuote = function() {
+  $scope.addQuote = function () {
     var newQuote = {
-      text: $scope.newQuoteText,
-      author: $scope.newQuoteAuthor
-    }
-    if (service.addData(newQuote)) {
-      $scope.newQuoteText = '';
-      $scope.newQuoteAuthor = '';
-    }
+      text: $scope.addText,
+      author: $scope.addAuthor
+    };
+    if(dataService.addData(newQuote)) {
+      $scope.addText = '';
+      $scope.addAuthor = '';
+    };
   }
 
-})
+
+});
