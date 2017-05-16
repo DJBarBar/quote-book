@@ -3,7 +3,7 @@ angular.module("quoteBook").controller("mainCtrl", function($scope, service) {
   $scope.quotes = service.getQuotes();
 
   $scope.deleteMe = function(textToDelete) {
-    service.removeData(textToDelete);
+    dataService.removeData(textToDelete);
   }
 
   $scope.addQuote = function() {
